@@ -8,24 +8,39 @@ function Header() {
 
   const menuData = [
     {
-      title: "메뉴1",
-      subMenus: ["서브메뉴 1", "서브메뉴 2"],
+      title: "사업개요",
+      subMenus: [
+        { name: "소개", path: "/intro" },
+        { name: "위치 안내", path: "/location" },
+        { name: "업체 소개", path: "/company" },
+      ],
     },
     {
-      title: "메뉴2",
-      subMenus: ["서브메뉴 1", "서브메뉴 2", "서브메뉴 3"],
+      title: "세대안내",
+      subMenus: [
+        { name: "평면도", path: "/floor-plan" },
+      ],
     },
     {
-      title: "메뉴3",
-      subMenus: ["서브메뉴 1", "서브메뉴 2"],
+      title: "단지안내",
+      subMenus: [
+        { name: "단지 배치도", path: "/site-plan" },
+        { name: "편의 시설", path: "/facilities" },
+        { name: "주변 시설", path: "/nearby" },
+      ],
     },
     {
-      title: "메뉴4",
-      subMenus: ["서브메뉴 1", "서브메뉴 2", "서브메뉴 3"],
+      title: "분양안내",
+      subMenus: [
+        { name: "분양일정", path: "/schedule" },
+      ],
     },
     {
-      title: "메뉴5",
-      subMenus: ["서브메뉴 1"],
+      title: "고객센터",
+      subMenus: [
+        { name: "공지사항", path: "/notice" },
+        { name: "많이 묻는 질문", path: "/faq" },
+      ],
     },
   ];
 
@@ -45,7 +60,9 @@ function Header() {
               <ul className="dropdown">
                 {/* 각 메뉴가 가진 subMenus 배열을 다시 map으로 돌립니다 */}
                 {menu.subMenus.map((sub, subIndex) => (
-                  <li key={subIndex}>{sub}</li>
+                  <li key={subIndex}>
+                    <Link to={sub.path}>{sub.name}</Link>
+                  </li>
                 ))}
               </ul>
             )}
