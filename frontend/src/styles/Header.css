@@ -29,6 +29,11 @@ header {
   text-align: center;
   position: relative; /* 서브메뉴의 기준점 */
   cursor: pointer;
+  transition: color 0.4s ease;
+}
+
+#header-menu > li:hover {
+  color: #b5b5b5;
 }
 
 /* 서브메뉴 스타일 */
@@ -36,7 +41,7 @@ header {
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: none;
   background-color: #ffffff;
   color: #333;
   list-style: none;
@@ -44,14 +49,62 @@ header {
   margin: 0;
   width: 150px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+  z-index: 100;
+  opacity: 0;
+  animation: dropdownSlide 0.4s ease forwards;
+}
+
+/* 드롭다운 애니메이션 */
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 .dropdown li {
-  padding: 10px 20px;
   white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .dropdown li:hover {
-  background-color: #f0f0f0;
+  background-color: #ff7a00;
+  color: white;
+}
+
+/* 링크 스타일 */
+.dropdown li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.submenu-link {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+  transition: background-color 0.25s;
+}
+
+/* hover 시 블럭 전체 색 변경 */
+.submenu-link:hover {
+  background-color: #ff7a00;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+}
+
+.logo img {
+  height: 80px;
+  cursor: pointer;
 }

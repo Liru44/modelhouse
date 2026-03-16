@@ -46,11 +46,14 @@ function Header() {
 
   return (
     <header>
-      <h1>로고</h1>
+      <Link to="/" className="logo">
+        <img src="logo.jpg"/>
+      </Link>
       <ul id="header-menu">
         {menuData.map((menu, index) => (
           <li
             key={index}
+            className="main-menu"
             onMouseEnter={() => setOpenIndex(index)}
             onMouseLeave={() => setOpenIndex(null)}
           >
@@ -61,7 +64,7 @@ function Header() {
                 {/* 각 메뉴가 가진 subMenus 배열을 다시 map으로 돌립니다 */}
                 {menu.subMenus.map((sub, subIndex) => (
                   <li key={subIndex}>
-                    <Link to={sub.path}>{sub.name}</Link>
+                    <Link to={sub.path} className="submenu-link">{sub.name}</Link>
                   </li>
                 ))}
               </ul>
