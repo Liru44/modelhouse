@@ -25,9 +25,9 @@ header {
 }
 
 #header-menu > li {
-  flex: 1; /* 동일한 간격 유지 */
+  flex: 1;
   text-align: center;
-  position: relative; /* 서브메뉴의 기준점 */
+  position: relative;
   cursor: pointer;
   transition: color 0.4s ease;
 }
@@ -68,7 +68,9 @@ header {
 
 .dropdown li {
   white-space: nowrap;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .dropdown li:hover {
