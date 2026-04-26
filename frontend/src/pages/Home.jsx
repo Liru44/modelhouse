@@ -1,15 +1,8 @@
-// src/pages/Home.jsx
 import React from "react";
 import "../styles/Home.css";
-import { Map, useKakaoLoader } from "react-kakao-maps-sdk";
+import KakaoMap from "../components/KakaoMap";
 
 const Home = () => {
-  const [loading, error] = useKakaoLoader({
-    appkey: process.env.REACT_APP_KAKAOMAP_KEY,
-  });
-
-  console.log(process.env.REACT_APP_KAKAOMAP_KEY);
-
   return (
     <div className="home">
       {/* 1. Hero Section */}
@@ -40,19 +33,19 @@ const Home = () => {
         <h2>위치 안내</h2>
         <div className="location-content">
           <div className="map-area">
-            <Map
-              center={{ lat: 37.527, lng: 127.027 }}
-              style={{ width: "100%", height: "350px" }}
+            <KakaoMap
+              address="울산광역시 중구 다운동 산30-2"
               level={3}
+              style={{ width: "100%", height: "100%" }}
             />
           </div>
           <div className="location-info">
-            <h3>서울 강남구 ○○동</h3>
+            <h3>울산광역시 중구 다운동</h3>
             <ul>
-              <li>지하철 2호선 도보 5분</li>
-              <li>초등학교 도보 3분</li>
-              <li>대형마트 차량 10분</li>
-              <li>대형 공원 인접</li>
+              <li>✔ 지하철 ○○역 도보 10분</li>
+              <li>✔ 초등학교 도보 5분</li>
+              <li>✔ 대형마트 차량 10분</li>
+              <li>✔ 대형 공원 인접</li>
             </ul>
           </div>
         </div>

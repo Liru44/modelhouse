@@ -6,5 +6,19 @@
 
 .facility-card img {
     width: 100%;
+    height: auto;
     border-radius: 4px;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .facility-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .facility-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }

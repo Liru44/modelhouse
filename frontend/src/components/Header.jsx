@@ -1,10 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/Header.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-// 헤더
+// 헤더 - 데스크탑: hover 드롭다운 / 모바일: 햄버거 메뉴 + 탭 토글
 function Header() {
   const [openIndex, setOpenIndex] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // 페이지 이동 시 모바일 메뉴 닫기
+  useEffect(() => {
+    setMenuOpen(false);
+    setOpenIndex(null);
+  }, [location]);
 
   const menuData = [
     {
@@ -33,6 +41,7 @@ function Header() {
       title: "분양안내",
       subMenus: [
         { name: "분양일정", path: "/schedule" },
+        { name: "청약방법", path: "/subscription" },
       ],
     },
     {
@@ -44,27 +53,49 @@ function Header() {
     },
   ];
 
+  // 모바일에서 메인 메뉴 탭 시 해당 서브메뉴 토글
+  const handleMainClick = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <header>
       <Link to="/" className="logo">
-        <img src="logo.jpg"/>
+        <img src="logo.jpg" alt="로고" />
       </Link>
-      <ul id="header-menu">
+
+      {/* 모바일 전용 햄버거 버튼 */}
+      <button
+        className={`hamburger ${menuOpen ? "open" : ""}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="메뉴 열기/닫기"
+      >
+        <span />
+        <span />
+        <span />
+      </button>
+
+      <ul id="header-menu" className={menuOpen ? "mobile-open" : ""}>
         {menuData.map((menu, index) => (
           <li
             key={index}
             className="main-menu"
             onMouseEnter={() => setOpenIndex(index)}
             onMouseLeave={() => setOpenIndex(null)}
+            onClick={() => handleMainClick(index)}
           >
-            {menu.title} {/* 메뉴의 제목 (메뉴1, 메뉴2...) */}
-            {/* 현재 마우스가 올라간 메뉴의 index일 때만 서브메뉴 렌더링 */}
+            {menu.title}
             {openIndex === index && (
               <ul className="dropdown">
-                {/* 각 메뉴가 가진 subMenus 배열을 다시 map으로 돌립니다 */}
                 {menu.subMenus.map((sub, subIndex) => (
                   <li key={subIndex}>
-                    <Link to={sub.path} className="submenu-link">{sub.name}</Link>
+                    <Link
+                      to={sub.path}
+                      className="submenu-link"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {sub.name}
+                    </Link>
                   </li>
                 ))}
               </ul>

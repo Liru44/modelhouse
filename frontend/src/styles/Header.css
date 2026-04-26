@@ -12,6 +12,9 @@ header {
   background-color: #262625;
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 500;
 }
 
 #header-menu {
@@ -54,7 +57,7 @@ header {
   animation: dropdownSlide 0.4s ease forwards;
 }
 
-/* 드롭다운 애니메이션 */
+/* 드롭다운 슬라이드 인 */
 @keyframes dropdownSlide {
   from {
     opacity: 0;
@@ -78,24 +81,17 @@ header {
   color: white;
 }
 
-/* 링크 스타일 */
-.dropdown li a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.submenu-link {
+#header-menu .submenu-link {
   display: block;
   width: 100%;
   padding: 10px 20px;
   text-decoration: none;
-  color: inherit;
+  color: #333;
   box-sizing: border-box;
   transition: background-color 0.25s;
 }
 
-/* hover 시 블럭 전체 색 변경 */
-.submenu-link:hover {
+#header-menu .submenu-link:hover {
   background-color: #ff7a00;
   color: white;
 }
@@ -104,9 +100,134 @@ header {
   display: flex;
   align-items: center;
   margin-left: 40px;
+  flex-shrink: 0;
 }
 
 .logo img {
   height: 80px;
   cursor: pointer;
+}
+
+/* 햄버거 버튼 — 데스크탑에서는 숨김 */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 20px;
+  padding: 0;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* X 닫힘 애니메이션 */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ── 모바일 (768px 이하) ── */
+@media (max-width: 768px) {
+  header {
+    height: 60px;
+    justify-content: space-between;
+  }
+
+  .logo {
+    margin-left: 16px;
+  }
+
+  .logo img {
+    height: 44px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* 모바일 메뉴: 기본 숨김, 헤더 아래 full-width로 표시 */
+  #header-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #262625;
+    z-index: 200;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  #header-menu.mobile-open {
+    display: flex;
+  }
+
+  #header-menu > li {
+    text-align: left;
+    padding: 14px 20px;
+    border-bottom: 1px solid #3a3a3a;
+    min-height: 44px; /* 터치 영역 최소 44px 확보 */
+    box-sizing: border-box;
+    flex: unset;
+  }
+
+  /* 모바일 드롭다운: 절대 위치 해제, 인라인 펼침 */
+  .dropdown {
+    position: static;
+    transform: none;
+    animation: none;
+    box-shadow: none;
+    background-color: #1e1e1e;
+    width: 100%;
+    opacity: 1;
+    padding: 4px 0;
+    margin-top: 8px;
+  }
+
+  #header-menu .submenu-link {
+    padding: 10px 20px 10px 36px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 14px;
+  }
+
+  #header-menu .submenu-link:hover,
+  #header-menu .submenu-link:active {
+    background-color: #ff7a00;
+    color: white;
+  }
+}
+
+/* ── 태블릿 (769px ~ 1024px) ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  header {
+    height: 80px;
+  }
+
+  .logo img {
+    height: 60px;
+  }
+
+  #header-menu > li {
+    font-size: 14px;
+  }
 }

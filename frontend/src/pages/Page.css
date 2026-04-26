@@ -1,31 +1,190 @@
 .page {
-    width: 1200px;
-    margin: 0 auto;
-    padding: 60px 0;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 60px 5%;
+  box-sizing: border-box;
 }
 
 .page-title {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 40px;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 40px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #111;
 }
 
 .section {
-    margin-bottom: 80px;
+  margin-bottom: 80px;
 }
 
 .section-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-    border-left: 4px solid #2c3e50;
-    padding-left: 10px;
+  font-size: 22px;
+  margin: 0 0 20px;
+  border-left: 4px solid #262625;
+  padding-left: 12px;
 }
 
 .section p {
-    line-height: 1.6;
+  line-height: 1.8;
+  color: #444;
+}
+
+.img-box {
+  margin-bottom: 24px;
 }
 
 .img-box img {
-    width: 100%;
-    border-radius: 6px;
+  width: 100%;
+  border-radius: 6px;
+}
+
+/* 정보 테이블 */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.info-table th,
+.info-table td {
+  padding: 14px 18px;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.info-table th {
+  background: #f7f7f7;
+  font-weight: 600;
+  width: 25%;
+  color: #333;
+}
+
+/* 분양일정 테이블 */
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 16px 20px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 15px;
+}
+
+.schedule-table th {
+  background: #262625;
+  color: #fff;
+  font-weight: 600;
+}
+
+.schedule-table tbody tr:nth-child(even) td {
+  background: #fafafa;
+}
+
+/* FAQ */
+.faq {
+  margin-top: 10px;
+}
+
+.faq details {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 6px 0;
+}
+
+.faq details:first-child {
+  border-top: 1px solid #e8e8e8;
+}
+
+.faq summary {
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  padding: 16px 8px;
+  position: relative;
+  user-select: none;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::before {
+  content: "Q.";
+  color: #ff7a00;
+  margin-right: 10px;
+  font-weight: 700;
+}
+
+.faq summary::after {
+  content: "▾";
+  position: absolute;
+  right: 8px;
+  color: #999;
+  transition: transform 0.2s;
+}
+
+.faq details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.faq details p {
+  margin: 0 0 16px 28px;
+  color: #555;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .page {
+    padding: 40px 4%;
+  }
+
+  .page-title {
+    font-size: 24px;
+    margin-bottom: 28px;
+  }
+
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .info-table th {
+    width: 35%;
+    font-size: 14px;
+    padding: 12px 12px;
+  }
+
+  .info-table td {
+    font-size: 14px;
+    padding: 12px 12px;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    padding: 12px 10px;
+    font-size: 14px;
+  }
+
+  .faq summary {
+    font-size: 14px;
+    padding: 14px 8px;
+  }
+
+  .faq details p {
+    font-size: 14px;
+    margin-left: 20px;
+  }
 }

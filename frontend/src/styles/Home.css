@@ -107,3 +107,93 @@ h2 {
     width: 250px;
     background: #fafafa;
 }
+
+/* ── 태블릿 (769px ~ 1024px) ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section {
+    padding: 80px 6%;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .location-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .map-area {
+    width: 100%;
+  }
+
+  .movein-card {
+    gap: 20px;
+  }
+
+  .movein-card div {
+    width: 180px;
+    padding: 28px;
+  }
+}
+
+/* ── 모바일 (768px 이하) ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 5%;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 36px;
+  }
+
+  .hero-overlay {
+    padding: 30px 20px;
+  }
+
+  .hero-title {
+    font-size: clamp(24px, 7vw, 40px);
+    letter-spacing: 1px;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+  }
+
+  .hero-movein {
+    font-size: 14px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .gallery-item {
+    height: 180px;
+  }
+
+  .location-content {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .map-area {
+    width: 100%;
+    height: 240px;
+  }
+
+  .movein-card {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .movein-card div {
+    width: 100%;
+    max-width: 320px;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+}
